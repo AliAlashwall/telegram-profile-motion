@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1D2733"
-    tools:context=".MainActivity"
-    app:layoutDescription="@xml/activity_main_scene">
+    app:layoutDescription="@xml/activity_main_scene"
+    tools:context=".MainActivity">
+
     <View
         android:id="@+id/view"
         android:layout_width="wrap_content"
@@ -15,51 +16,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:contentDescription="@string/d_arrowicon"
         android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/d_arrowicon"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/video_call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
+        android:contentDescription="@string/d_video_icon"
         android:src="@drawable/ic_baseline_videocam_24"
         app:layout_constraintEnd_toStartOf="@id/call"
         app:layout_constraintStart_toEndOf="@+id/arrow"
-        app:layout_constraintTop_toTopOf="@+id/arrow"
-        android:contentDescription="@string/d_video_icon" />
+        app:layout_constraintTop_toTopOf="@+id/arrow" />
+
     <ImageView
         android:id="@+id/call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/call_icon"
         android:src="@drawable/ic_baseline_call_24"
         app:layout_constraintEnd_toStartOf="@+id/three_dots"
         app:layout_constraintStart_toEndOf="@+id/video_call"
-        app:layout_constraintTop_toTopOf="@+id/video_call"
-        android:contentDescription="@string/call_icon" />
+        app:layout_constraintTop_toTopOf="@+id/video_call" />
+
     <ImageView
         android:id="@+id/three_dots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/d_3dots"
         android:src="@drawable/ic_baseline_3_dots_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/call"
-        android:contentDescription="@string/d_3dots" />
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/user_photo"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_margin="15dp"
-        android:src="@drawable/avatar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/arrow" />
+        app:layout_constraintTop_toTopOf="@+id/call" />
     <TextView
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
@@ -67,40 +64,61 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
         android:text="@string/username"
+        android:elevation="1dp"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/user_photo"
         app:layout_constraintTop_toTopOf="@id/user_photo" />
+
     <TextView
         android:id="@+id/lastseen"
         style="@style/descriptionStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/last_seen"
+        android:elevation="1dp"
         app:layout_constraintStart_toStartOf="@+id/user_name"
         app:layout_constraintTop_toBottomOf="@+id/user_name" />
+
     <ImageView
         android:id="@+id/messageIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/message_background"
         android:layout_marginTop="-10dp"
+        android:background="@drawable/message_background"
+        android:contentDescription="@string/message_icone"
         android:src="@drawable/ic_baseline_message_24"
         app:layout_constraintEnd_toEndOf="@+id/three_dots"
         app:layout_constraintStart_toStartOf="@+id/call"
-        app:layout_constraintTop_toBottomOf="@id/user_photo"
-        android:contentDescription="@string/message_icone" />
+        app:layout_constraintTop_toBottomOf="@id/user_photo" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/user_photo"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/arrow"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar" />
+    </androidx.cardview.widget.CardView>
     <TextView
         android:id="@+id/Info"
+        style="@style/BoldBlue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/BoldBlue"
-        android:text="@string/info"
         android:layout_marginStart="10dp"
+        android:text="@string/info"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/arrow"
         app:layout_constraintTop_toBottomOf="@+id/messageIcon" />
+
     <TextView
         android:id="@+id/phoneNumber"
         android:layout_width="wrap_content"
@@ -111,15 +129,17 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/Info"
         app:layout_constraintTop_toBottomOf="@+id/Info" />
+
     <TextView
         android:id="@+id/mobile"
+        style="@style/descriptionStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/mobile"
-        style="@style/descriptionStyle"
         app:layout_constraintStart_toStartOf="@+id/Info"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
@@ -131,34 +151,37 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/mobile"
         app:layout_constraintTop_toBottomOf="@+id/mobile" />
+
     <TextView
         android:id="@+id/user"
+        style="@style/descriptionStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/user"
-        style="@style/descriptionStyle"
         app:layout_constraintStart_toStartOf="@+id/Info"
         app:layout_constraintTop_toBottomOf="@+id/username" />
+
     <ImageView
         android:id="@+id/QR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-15dp"
+        android:contentDescription="@string/qrcode"
         android:src="@drawable/ic_baseline_qr_code_24"
         app:layout_constraintEnd_toEndOf="@+id/messageIcon"
-        app:layout_constraintTop_toTopOf="@+id/user"
-        android:contentDescription="@string/qrcode" />
+        app:layout_constraintTop_toTopOf="@+id/user" />
+
     <View
         android:id="@+id/Line"
         android:layout_width="wrap_content"
         android:layout_height="1dp"
-        android:background="#0F1925"
         android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="@+id/user"
-        app:layout_constraintTop_toBottomOf="@+id/user"
+        android:background="#0F1925"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="@+id/user"
+        app:layout_constraintTop_toBottomOf="@+id/user" />
+
     <TextView
         android:id="@+id/notifications"
         android:layout_width="wrap_content"
@@ -169,6 +192,7 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/mobile"
         app:layout_constraintTop_toBottomOf="@+id/Line" />
+
     <TextView
         android:id="@+id/on_off"
         style="@style/descriptionStyle"
@@ -177,12 +201,14 @@
         android:text="@string/off"
         app:layout_constraintStart_toStartOf="@id/notifications"
         app:layout_constraintTop_toBottomOf="@id/notifications" />
+
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switchCompat2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/QR"
         app:layout_constraintTop_toTopOf="@+id/on_off" />
+
     <View
         android:id="@+id/Line2"
         android:layout_width="match_parent"
@@ -190,28 +216,30 @@
         android:layout_marginTop="20dp"
         android:background="#0F1925"
         app:layout_constraintTop_toBottomOf="@id/on_off" />
+
     <TextView
         android:id="@+id/textView2"
+        style="@style/BoldBlue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/media"
-        style="@style/BoldBlue"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Line2" />
+
     <TextView
         android:id="@+id/line3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/s_line"
-        android:textStyle="bold"
         android:textColor="@color/BabyBlue"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/photo1"
-        app:layout_constraintStart_toStartOf="@id/textView2"
         app:layout_constraintEnd_toEndOf="@id/textView2"
-        />
+        app:layout_constraintStart_toStartOf="@id/textView2" />
+
     <TextView
         android:id="@+id/textView3"
         style="@style/descriptionStyle"
@@ -222,6 +250,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
+
     <TextView
         android:id="@+id/textView4"
         style="@style/descriptionStyle"
@@ -232,6 +261,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
+
     <TextView
         android:id="@+id/textView5"
         style="@style/descriptionStyle"
@@ -242,6 +272,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView6"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
+
     <TextView
         android:id="@+id/textView6"
         style="@style/descriptionStyle"
@@ -252,57 +283,63 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
+
     <ImageView
         android:id="@+id/photo1"
         android:layout_width="130dp"
         android:layout_height="160dp"
         android:layout_marginTop="10dp"
+        android:contentDescription="@string/photo1"
         android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView2"
         app:layout_constraintEnd_toStartOf="@id/photo2"
-        android:contentDescription="@string/photo1" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2" />
+
     <ImageView
         android:id="@+id/photo2"
         android:layout_width="130dp"
         android:layout_height="160dp"
+        android:contentDescription="@string/photo2"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintStart_toEndOf="@id/photo1"
-        app:layout_constraintTop_toTopOf="@id/photo1"
-        android:contentDescription="@string/photo2" />
+        app:layout_constraintTop_toTopOf="@id/photo1" />
+
     <ImageView
         android:id="@+id/photo3"
         android:layout_width="130dp"
         android:layout_height="160dp"
+        android:contentDescription="@string/photo3"
         android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintStart_toEndOf="@id/photo2"
-        app:layout_constraintTop_toTopOf="@id/photo1"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/photo3" />
+        app:layout_constraintStart_toEndOf="@id/photo2"
+        app:layout_constraintTop_toTopOf="@id/photo1" />
+
     <ImageView
         android:id="@+id/photo4"
         android:layout_width="130dp"
         android:layout_height="160dp"
         android:layout_marginTop="10dp"
+        android:contentDescription="@string/photo4"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintStart_toStartOf="@id/photo1"
-        app:layout_constraintTop_toBottomOf="@id/photo1"
-        android:contentDescription="@string/photo4" />
+        app:layout_constraintTop_toBottomOf="@id/photo1" />
+
     <ImageView
         android:id="@+id/photo5"
         android:layout_width="130dp"
         android:layout_height="160dp"
+        android:contentDescription="@string/photo5"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintStart_toEndOf="@id/photo4"
-        app:layout_constraintTop_toTopOf="@id/photo4"
-        android:contentDescription="@string/photo5" />
+        app:layout_constraintTop_toTopOf="@id/photo4" />
+
     <ImageView
         android:id="@+id/photo6"
         android:layout_width="130dp"
         android:layout_height="160dp"
+        android:contentDescription="@string/photo6"
         android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintStart_toEndOf="@id/photo5"
-        app:layout_constraintTop_toTopOf="@id/photo4"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/photo6" />
+        app:layout_constraintStart_toEndOf="@id/photo5"
+        app:layout_constraintTop_toTopOf="@id/photo4" />
 </androidx.constraintlayout.motion.widget.MotionLayout>
